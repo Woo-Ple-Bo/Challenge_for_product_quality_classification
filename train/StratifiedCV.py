@@ -9,7 +9,7 @@ def train(train_X, train_y, model, n_splits=5):
     for i, (train_index, test_index) in enumerate(skf.split(train_X, train_y)):
         model.fit(train_X.iloc[train_index], train_y.iloc[train_index])
         pred = model.predict(train_X.iloc[test_index])
-        score = f1_score(train_y[test_index], pred, average='macro')
+        score = f1_score(train_y.reset_index(drop=True)[test_index], pred, average='macro')
         models.append(model)
         scores.append(score)
 
