@@ -1,10 +1,10 @@
 from sklearn.metrics import f1_score
-from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import KFold
 
 def train(train_X, train_y, model, params):
     models = []
     scores = []
-    skf = StratifiedKFold(n_splits=5)
+    skf = KFold(n_splits=5)
     skf.get_n_splits(train_X, train_y)
     for i, (train_index, test_index) in enumerate(skf.split(train_X, train_y)):
         model.fit(train_X.iloc[train_index], train_y.iloc[train_index], **params)
