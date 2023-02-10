@@ -2,7 +2,7 @@ import pandas as pd
 
 
 def preprocess(train_X, test):
-    """원핫 인코딩
+    """어떤 열의 모든 값이 null인 열을 제거
 
     Parameters
     ----------

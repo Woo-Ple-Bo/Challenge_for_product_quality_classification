@@ -2,7 +2,7 @@ import pandas as pd
 
 
 def preprocess(train_X, test):
-    """원핫 인코딩
+    """ PROD_LINE과 LINE 컬럼 병합
 
     Parameters
     ----------
@@ -21,7 +21,7 @@ def preprocess(train_X, test):
     
     Notes
     -----
-    PRODUCT_CODE 열과 LINE 열을 이어냄
+    PRODUCT_CODE 열과 LINE 열을 병합
     """
 
     train_X['PROD_LINE'] = train_X['PRODUCT_CODE']+'_'+train_X['LINE']
