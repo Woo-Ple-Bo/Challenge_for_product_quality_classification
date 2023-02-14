@@ -24,9 +24,10 @@ def preprocess(train_X, test):
     이 함수는 열의 표준편차가 0인 열을 제거
     """
 
-    desc = train_X.describe()
-    std_zero_col = desc.columns[desc.loc['std'] == 0]
-    train_X = train_X.drop(std_zero_col, axis=1)
-    test = test.drop(std_zero_col, axis=1)
+    for col in [x for x in train_X.columns if 'X_' in x]:
+        if len(train_X[col].value_counts())==1:
+            train_X = train_X.drop(col, axis=1)
+        
+    test = test[train_X.columns]
 
     return train_X, test
